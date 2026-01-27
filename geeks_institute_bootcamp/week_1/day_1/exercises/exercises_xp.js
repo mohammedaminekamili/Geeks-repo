@@ -41,15 +41,83 @@ for(let color in favColors){
 //bonus
 
 // ===== Exercise 3
+//1
+let number=prompt("give a number")
+console.log(typeof(number))
 
-while(!Number(number)){
-    var  number=prompt("give a number")
-  }
 
+//2
 while(Number(number)< 10){
     number=prompt("give a number higher then 10")
 }
 
 // ===== Exercise 4
+//1
+const building = {
+    numberOfFloors: 4,
+    numberOfAptByFloor: {
+        firstFloor: 3,
+        secondFloor: 4,
+        thirdFloor: 9,
+        fourthFloor: 2,
+    },
+    nameOfTenants: ["Sarah", "Dan", "David"],
+    numberOfRoomsAndRent:  {
+        sarah: [3, 990],
+        dan:  [4, 1000],
+        david: [1, 500],
+    },
+}
+//2
+console.log(building.numberOfFloors)
+//3
+console.log(building.numberOfAptByFloor.firstFloor)
+console.log(building.numberOfAptByFloor.thirdFloor)
+//4
+console.log(building.nameOfTenants[1])
+console.log(building.numberOfRoomsAndRent.dan[0])
+//5
+let sumRent=building.numberOfRoomsAndRent.sarah[1]+building.numberOfRoomsAndRent.david[1]
+if (sumRent>building.numberOfRoomsAndRent.dan[1]) {
+    building.numberOfRoomsAndRent.dan[1]+=1200
+}
 
-// ===== Exercise ...
+// ===== Exercise 5 
+//1
+const family={
+    father: "bouchaib",
+    mother:"jamila",
+    children: "mohammed"
+}
+//2
+for(let member in family){
+    console.log(member)
+}
+//3
+for(let member in family){
+    console.log(family[member])
+}
+
+// ===== Exercise 6
+const details = {
+    my: 'name',
+    is: 'Rudolf',
+    the: 'reindeer'
+  }
+let phrase=[]
+  for (let word in details){
+phrase.push(word)
+phrase.push(details[word])
+  }
+phrase=phrase.join(" ")
+console.log(phrase)
+
+// ===== Exercise 7
+const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
+let sortedNames=names.sort()
+let societyName=[]
+for(let name of sortedNames){
+    societyName.push(name[0])
+}
+societyName=societyName.join("")
+console.log(societyName)
