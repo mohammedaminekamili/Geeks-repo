@@ -39,7 +39,10 @@ for(let color in favColors){
     console.log(`my #${Number(color)+1} choice is ${favColors[color]}`)
 }
 //bonus
-
+let suffix=["st", "nd"]
+for(let i=0;i<favColors.length;i++){
+    console.log(`my ${i+1}${suffix[i]} choice is ${favColors[i]}`)
+}
 // ===== Exercise 3
 //1
 let number=prompt("give a number")
