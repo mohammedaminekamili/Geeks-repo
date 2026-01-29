@@ -205,6 +205,12 @@ for (let index = 0; index < list.length; index++) {
 }
  const body= document.body
  body.style.fontSize="10px"
+
+//bonus
+if (div.style.backgroundColor=="lightblue") {
+    alert("Hello "+list[0].firstElementChild.textContent+" and "+list[0].lastElementChild.textContent)
+}
+
 // ===== Exercise 6
 const div=document.getElementById("navBar")
 div.setAttribute("id","socialNetworkNavigation")
