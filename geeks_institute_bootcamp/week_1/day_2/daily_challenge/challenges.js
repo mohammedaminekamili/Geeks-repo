@@ -60,5 +60,38 @@ const planetsData = [
     
   }
 // ====== Daily Challenge 2
+let phrase=prompt("give me separated words with ,")
+const arr=phrase.split(",")
+function longestWord(arr) {
+    let wordlength=0
+    for (let element of arr) {
+        if (element.length>wordlength) {
+            wordlength=element.length
+        }
+    }
+    return wordlength
+}
+function wrapper(wordlength) {
+    let Line="****"
+       for (let index = 0; index < longestWord(arr); index++) {
+        Line+="*"
+    }
+
+    console.log(Line)
+}
+function displayInFame(arr,b) {
+    wrapper(arr)
+    for (let name of arr) {
+        let line="* "+name
+       while (line.length<b+2) {
+           line+=" "
+       }
+        line+=" *"
+        console.log(line)
+    }
+    wrapper(arr)
+}
+displayInFame(arr,longestWord(arr))
+
 
 // ====== Daily Challenge 3
