@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>  
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 100px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.palette {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.color {
+    width: 35px;
+    height: 35px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+#clear {
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#canvas {
+    flex-grow: 1;
+    display: grid;
+    /* This creates a dense grid of squares */
+    grid-template-columns: repeat(60, 1fr); 
+    grid-template-rows: repeat(40, 1fr);
+    background-color: white;
+}
+
+.square {
+    border: 0.1px solid #ddd;
+}
+</style> 
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+        <button id="clear">Clear</button>
+        <div class="palette">
+            <div class="color" style="background-color: #FF0000;"></div>
+            <div class="color" style="background-color: #FFA500;"></div>
+            <div class="color" style="background-color: #FFFF00;"></div>
+            <div class="color" style="background-color: #008000;"></div>
+            <div class="color" style="background-color: #0000FF;"></div>
+            <div class="color" style="background-color: #4B0082;"></div>
+            <div class="color" style="background-color: #EE82EE;"></div>
+            <div class="color" style="background-color: #000000;"></div>
+            <div class="color" style="background-color: #FFFFFF;"></div> </div>
+    </aside>
+
+    <main id="canvas"></main>
+</div>
+
+  <script src="test.js"></script>
+</body>
+</html>
