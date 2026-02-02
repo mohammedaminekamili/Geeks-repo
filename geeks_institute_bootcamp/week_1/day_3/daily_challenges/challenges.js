@@ -2,6 +2,9 @@
 const libForm = document.getElementById("libform");
 const storySpan = document.getElementById("story");
 
+function madLibs(noun, adjective, person, verb, place) {
+    return `One day, ${person} went to ${place} with a very ${adjective} ${noun}. Everyone was shocked when they started to ${verb} right in the middle of the street!`;
+}
 
 libForm.addEventListener("submit", function(event) {    
     event.preventDefault();
@@ -16,8 +19,8 @@ libForm.addEventListener("submit", function(event) {
         alert("Please fill in all the blanks before clicking 'Lib it!'");
         return; 
     }
-    const story = `One day, ${person} went to ${place} with a very ${adjective} ${noun}. 
-                   Everyone was shocked when they started to ${verb} right in the middle of the street!`;
+
+    const story = madLibs(noun, adjective, person, verb, place);
 
 
     storySpan.textContent = story;

@@ -21,6 +21,15 @@ body.appendChild(button)
 button.addEventListener("click",()=>{
     article.style.fontWeight="bold"
 })
+h1.addEventListener("mouseover",()=>{
+  h1.style.fontSize=Math.floor(Math.random()*100)+"px"
+})
+p=document.querySelectorAll("p")[1]
+p.addEventListener("mouseover",()=>{
+  p.classList.add("fade-out")
+})
+
+
 
 // ===== Exercise 2
 const form=document.forms[0]
@@ -41,7 +50,7 @@ form.addEventListener("submit", function (event) {
   
 
 
-  if (firstname.value === "" || lastname.value === "") {
+  if (firstname.value == "" || lastname.value == "") {
     alert("Please fill in both fields");
     return;
   }
@@ -95,7 +104,7 @@ const radiusInput = document.getElementById("radius");
 volumeInput.setAttribute("disabled",true)
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // prevent page reload
+  event.preventDefault(); 
 
 
   const radius = Number(radiusInput.value);
