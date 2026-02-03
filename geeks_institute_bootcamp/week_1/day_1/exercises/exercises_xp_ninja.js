@@ -25,22 +25,23 @@ function compare(a,b){
 //4
 console.log(compare(persone1.ibm(),persone2.ibm()))
 // ===== Exercise 2
-function findAVG(a){
+let gradeList=[1,90,50]
+function findAVG(gradeList){
     let sum=0
-    for (element of a){
+    for (element of gradeList){
         sum+=element
     }
-    let avg =sum/a.length
+    let avg =sum/gradeList.length
     console.log(avg)
     avg>=65?console.log("You passed"):console.log("You failed")
 }
 //bonus
-function calculAVG(a){
+function calculAVG(gradeList){
     let sum=0
-    for (element of a){
+    for (element of gradeList){
         sum+=element
     }
-    return sum/a.length
+    return sum/gradeList.length
 }
 
 function result(a){
