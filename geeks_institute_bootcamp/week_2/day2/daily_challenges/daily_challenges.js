@@ -1,34 +1,31 @@
-let client = "John";
+class Video{
+    constructor(title,uploader,time){
+        this.title=title
+        this.uploader=uploader
+        this.time=time
 
-const groceries = {
-    fruits : ["pear", "apple", "banana"],
-    vegetables: ["tomatoes", "cucumber", "salad"],
-    totalPrice : "20$",
-    other : {
-        paid : true,
-        meansOfPayment : ["cash", "creditCard"]
     }
+    watch(){
+        console.log(`${this.uploader} watched all ${this.time} of ${this.title}!`)
+    }
+
 }
 
+const firstVid=new Video("tuto","bahaj",15)
+firstVid.watch()
+const secondVid=new Video("song","X",3)
 
-const displayGroceries=()=>groceries.fruits.forEach(x => {
-    console.log(x)
-    
+
+const videoData = [
+    { title: "JS Tutorial", uploader: "Ben", time: 300 },
+    { title: "Cooking Pasta", uploader: "Maria", time: 600 },
+    { title: "Workout Routine", uploader: "Alex", time: 1200 },
+    { title: "Cats Being Cats", uploader: "Sarah", time: 60 },
+    { title: "Node.js Basics", uploader: "John", time: 900 }
+];
+
+const videoInstances = videoData.map(data => {
+    return new Video(data.title, data.uploader, data.time);
 });
 
-displayGroceries()
 
-const cloneGroceries=()=>{
-    let user =client
-    client="betty"
-    // user will not change because it passed by value
-    const shopping=groceries
-    groceries.totalPrice=35
-    //yes shopping will change because it's passed by reference
-    groceries.other.paid=false
-        //yes shopping will change because it's passed by reference
-
-
-}
-
-cloneGroceries()
