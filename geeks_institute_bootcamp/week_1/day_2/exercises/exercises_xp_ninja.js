@@ -83,3 +83,83 @@ function unique(arr){
 }
 // ===== Exercise 6
 
+function createCalendar(year,month){
+    const body=document.body
+    month=month-1
+    const date=new Date(year,month,1)
+    let Firstday= date.getDay()
+    Firstday=Firstday>0?Firstday-1: 6
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    // Months with 30 days (by index)
+    const months30Indexes = [3, 5, 8, 10]; // April, June, September, November
+    let count=1
+// Months with 31 days (by index)
+    const months31Indexes = [0, 2, 4, 6, 7, 9, 11]; // Jan, Mar, May, Jul, Aug, Oct, Dec
+    let daysCount=months30Indexes.includes(month)?30:months31Indexes.includes(month)?31:(month==1&&year%4==0)?29:28
+    const table=document.createElement("table")
+    body.appendChild(table)
+    const thead=document.createElement("tr")
+    table.appendChild(thead)
+
+    for (const day of daysOfWeek) {
+        let th=document.createElement("th")
+        th.textContent=day
+        thead.appendChild(th)
+    }
+    const tr= document.createElement("tr")
+    table.appendChild(tr)
+        for (let index = 0; index < 7; index++) {
+            let td=document.createElement("td")
+       
+           if (index>=Firstday) {
+                
+                
+                td.textContent=count
+                
+                count++
+           } else {
+            
+               
+                
+                td.textContent="-"
+               
+                
+                
+           }
+           tr.appendChild(td)
+          
+
+            
+        }
+  
+    for (let i = 0; i < 5; i++) {
+       
+        const tr= document.createElement("tr")
+    table.appendChild(tr)
+        for (let index = 0; index < 7; index++) {
+           
+            let td=document.createElement("td")
+           if (count<=daysCount) {
+                
+               
+                td.textContent=count
+                
+                count++
+           } else {
+            
+             
+                td.textContent="-"
+
+                
+                
+                
+           }
+           tr.appendChild(td)
+          
+
+            
+        }
+    }
+    
+
+}
