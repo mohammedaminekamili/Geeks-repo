@@ -1,34 +1,35 @@
-let client = "John";
+const gameInfo = [
+    {
+      username: "john",
+      team: "red",
+      score: 5,
+      items: ["ball", "book", "pen"]
+    },
+    {
+      username: "becky",
+      team: "blue",
+      score: 10,
+      items: ["tape", "backpack", "pen"]
+    },
+    {
+      username: "susy",
+      team: "red",
+      score: 55,
+      items: ["ball", "eraser", "pen"]
+    },
+    {
+      username: "tyson",
+      team: "green",
+      score: 1,
+      items: ["book", "pen"]
+    },
+   ];
+const usernames=[]
+ gameInfo.forEach(x=>usernames.push(x.username+"!"))
+const winners=[]
+ gameInfo.forEach(x=>x.score>5?winners.push(x.username):null)
 
-const groceries = {
-    fruits : ["pear", "apple", "banana"],
-    vegetables: ["tomatoes", "cucumber", "salad"],
-    totalPrice : "20$",
-    other : {
-        paid : true,
-        meansOfPayment : ["cash", "creditCard"]
-    }
-}
 
-
-const displayGroceries=()=>groceries.fruits.forEach(x => {
-    console.log(x)
-    
-});
-
-displayGroceries()
-
-const cloneGroceries=()=>{
-    let user =client
-    client="betty"
-    // user will not change because it passed by value
-    const shopping=groceries
-    groceries.totalPrice=35
-    //yes shopping will change because it's passed by reference
-    groceries.other.paid=false
-        //yes shopping will change because it's passed by reference
-
-
-}
-
-cloneGroceries()
+let total = 0
+gameInfo.forEach(x=>total+=x.score)
+console.log(total)
