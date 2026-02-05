@@ -31,34 +31,32 @@ const planets = [
   }
 //bonus
 const planetsData = [
-    { planet: "Mercury", color: "gray", moons: 0 },
-    { planet: "Venus", color: "goldenrod", moons: 0 },
-    { planet: "Earth", color: "blue", moons: 1 },
-    { planet: "Mars", color: "red", moons: 2 },
-    { planet: "Jupiter", color: "brown", moons: 95 },
-    { planet: "Saturn", color: "khaki", moons: 146 },
-    { planet: "Uranus", color: "lightblue", moons: 27 },
-    { planet: "Neptune", color: "darkblue", moons: 14 }
-  ];
+  { planet: "Mercury", color: "gray", moons: 0 },
+  { planet: "Venus", color: "goldenrod", moons: 0 },
+  { planet: "Earth", color: "blue", moons: 1 },
+  { planet: "Mars", color: "red", moons: 2 },
+  { planet: "Jupiter", color: "brown", moons: 95 },
+  { planet: "Saturn", color: "khaki", moons: 146 },
+  { planet: "Uranus", color: "lightblue", moons: 27 },
+  { planet: "Neptune", color: "darkblue", moons: 14 }
+];
 
-  for (const  planetData of planetsData) {
-    let element=document.createElement("div")
-    element.classList.add("planet")
-    element.style.backgroundColor=planetData.color
-    let section = document.querySelector(".listPlanets")
-    section.appendChild(element)
-    if (planetData.moons) {
-      for (let index = 0; index < planetData.moons; index++) {
-        let element=document.createElement("div")
-      element.classList.add("moon")
-      let section = document.querySelector(".listPlanets")
-      section.appendChild(element)
-        
-      }
+for (const  planetData of planetsData) {
+  let planet=document.createElement("div")
+  planet.classList.add("planet")
+  planet.style.backgroundColor=planetData.color
+  
+  for (let index = 0; index < planetData.moons; index++) {
+      let moon=document.createElement("div")
+    moon.classList.add("moon")
+    
+    planet.appendChild(moon)
       
     }
-    
-  }
+    let section = document.querySelector(".listPlanets")
+  section.appendChild(planet)
+}
+
 // ====== Daily Challenge 2
 let phrase=prompt("give me separated words with ,")
 const arr=phrase.split(",")
