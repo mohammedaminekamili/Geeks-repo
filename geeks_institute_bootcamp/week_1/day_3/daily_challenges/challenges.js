@@ -25,3 +25,17 @@ libForm.addEventListener("submit", function(event) {
 
     storySpan.textContent = story;
 });
+// ====== Daily Challenge 2
+const regex = /^[A-Za-z]+$/;
+const body=document.body
+const input=document.createElement("input")
+input.setAttribute("type","text")
+body.appendChild(input)
+input.addEventListener("input",()=>{
+    if (!regex.test(input.value)) {
+        let chars = input.value.split("");
+    chars.splice(-1, 1);        // remove last char
+    input.value = chars.join(""); 
+        
+    }
+})
