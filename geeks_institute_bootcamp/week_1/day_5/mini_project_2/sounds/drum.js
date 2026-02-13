@@ -1,8 +1,6 @@
-// const body=document.body()
 let spans=document.querySelectorAll("span")
 
-// spans[0].addEventListner("click",(e)=>{
-// console.log("ra 5dama")
+
 
 
     spans.forEach(e => {e.addEventListener("click", ()=>{
