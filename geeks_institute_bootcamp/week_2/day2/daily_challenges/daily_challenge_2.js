@@ -11,4 +11,4 @@ const inventory = [
     { id: 5, car_make: "Honda", car_model: "Accord", car_year: 1995 },
   ];
 
-  sortCarInventoryByYear=(carInventory)=>   carInventory.sort((a, b) => a.car_year - b.car_year)
+ const sortCarInventoryByYear=(carInventory)=>   carInventory.sort((a, b) => a.car_year - b.car_year)
