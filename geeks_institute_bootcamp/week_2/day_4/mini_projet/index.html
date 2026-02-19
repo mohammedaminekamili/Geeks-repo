@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="generatedQuote"> 
+        
+    </section>
+    <button id="Generate">Generate Quote</button>
+    <button id="lengthSpace">length with space</button>
+    <button id="lengthWS">length without space</button>
+    <button id="numWords"> number of words </button>
+    <button id="likes">likes</button>
+    <br>
+    <form id="addQuote">
+        <input type="text" name="quote" id="quote">
+        <input type="text" name="author" id="author">
+        <input type="submit" id="submit">
+    </form>
+    <form id="quotesByAuthor">
+        <input type="text" id="authorinfo">
+        <input type="submit">
+    </form>
+</body>
+<script>
+    const quotes = [
+  {
+    id: 0,
+    author: "Albert Einstein",
+    quote: "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+    likes:0
+  },
+  {
+    id: 1,
+    author: "Oscar Wilde",
+    quote: "Be yourself; everyone else is already taken.",
+    likes:0
+  },
+  {
+    id: 2,
+    author: "Nelson Mandela",
+    quote: "It always seems impossible until it’s done.",
+    likes:0
+  },
+  {
+    id: 3,
+    author: "Confucius",
+    quote: "It does not matter how slowly you go as long as you do not stop.",
+    likes:0
+  }
+];
+const section=document.getElementById("generatedQuote")
+const button=document.getElementById("Generate")
+const form=document.getElementById("addQuote")
+let p= document.createElement("p")
+
+let prevIndex=100
+let index
+button.addEventListener("click",()=>{
+    
+    
+do {
+    index = Math.floor(Math.random()*quotes.length)
+    console.log(index)
+} while (index==prevIndex);
+
+    for (const element of quotes) {
+        if (element.id==index) {
+            p.textContent=element.quote
+        }
+    }
+    section.appendChild(p)
+    prevIndex=index
+})
+form.addEventListener("submit",(e)=>{
+    e.preventDefault()
+    
+    let obj={
+        id:quotes.length,
+        author:document.getElementById("author").value,
+        quote:document.getElementById("quote").value
+    }
+
+    quotes.push(obj)
+})
+const button1=document.getElementById("lengthSpace")
+const button2=document.getElementById("lengthWS")
+const button3=document.getElementById("numWords")
+const button4=document.getElementById("likes")
+
+button1.addEventListener("click",()=>{
+    p.textContent=quotes[index].quote.length
+    section.appendChild(p)
+
+
+})
+
+button2.addEventListener("click",()=>{
+    p.textContent=quotes[index].quote.split(" ").join("").length
+    section.appendChild(p)
+
+
+})
+
+button3.addEventListener("click",()=>{
+    p.textContent=quotes[index].quote.split(" ").length
+    section.appendChild(p)
+
+
+})
+
+button4.addEventListener("click",()=>{
+    quotes[index].likes++
+    console.log( quotes[index].likes)
+
+
+})
+
+
+
+const form2 = document.getElementById("quotesByAuthor");
+// Create these once outside the listener to avoid duplication
+const resultP = document.createElement("p");
+const nextBtn = document.createElement("button");
+const prevBtn = document.createElement("button");
+nextBtn.type = "button"; // Prevents form submission
+prevBtn.type = "button";
+nextBtn.textContent = "Next";
+prevBtn.textContent = "Previous";
+
+let authorQuotes = [];
+let authorIndex = 0;
+
+form2.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const authorName = document.getElementById("authorinfo").value;
+    authorQuotes = quotes.filter(x => x.author.toLowerCase() === authorName.toLowerCase());
+
+    if (authorQuotes.length > 0) {
+        authorIndex = 0;
+        resultP.textContent = authorQuotes[authorIndex].quote;
+        
+        // Append elements only if they aren't already there
+        form2.appendChild(resultP);
+        if (authorQuotes.length > 1) {
+            form2.appendChild(prevBtn);
+            form2.appendChild(nextBtn);
+        }
+    } else {
+        resultP.textContent = "No quotes found for this author.";
+        // Remove buttons if no quotes found
+        if (nextBtn.parentNode) {
+            form2.removeChild(nextBtn);
+            form2.removeChild(prevBtn);
+        }
+    }
+});
+
+nextBtn.addEventListener("click", () => {
+    authorIndex = (authorIndex + 1) % authorQuotes.length;
+    resultP.textContent = authorQuotes[authorIndex].quote;
+});
+
+prevBtn.addEventListener("click", () => {
+    authorIndex = (authorIndex - 1 + authorQuotes.length) % authorQuotes.length;
+    resultP.textContent = authorQuotes[authorIndex].quote;
+});
+
+
+</script>
+</html>
