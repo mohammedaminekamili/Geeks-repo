@@ -1,0 +1,1 @@
+const allTruthy = (...args) => args.every(Boolean);
