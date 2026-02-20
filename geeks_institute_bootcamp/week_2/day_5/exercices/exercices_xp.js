@@ -46,7 +46,7 @@ const marioGame = {
         }
     },
   }
-
+debugger
   let marioGameJSON= JSON.stringify(marioGame)
   let prettyJSON=JSON.stringify(marioGame,null,4)
   console.log(marioGame)
