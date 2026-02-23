@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm" name="myForm">
+        <input type="text" name="search" id="search">
+        <input type="submit" name="generate">
+        <button id="deleteAll">Delete All</button>
+        <br>
+    </form>
+</body>
+<script>
+    const getGIF=async (search)=>{
+        let response= await fetch("https://api.giphy.com/v1/gifs/search?q="+search+"&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My")
+        let data =await response.json()
+        return data
+    }
+
+    const form=document.getElementById("myForm")
+    const input=document.getElementById("search")
+    const body=document.body
+    const btndeleteAll=document.getElementById("deleteAll")
+    let index=0
+    form.addEventListener("submit",async (e)=>{
+        const section=document.createElement("section")
+        const btndelete=document.createElement("button")
+
+        e.preventDefault()
+        let search=input.value
+        let data= await getGIF(search)
+        const img =document.createElement("img")
+        let random=Math.floor(Math.random() * data.data.length)
+        img.setAttribute("src", data.data[random].images.original.url)
+        section.appendChild(img)
+        section.appendChild(btndelete)
+        section.setAttribute("id",index+"sec")
+        btndelete.setAttribute("id",index)
+        btndelete.textContent="Delete element"
+        body.appendChild(section)
+      
+        index++
+        btndelete.addEventListener("click",(e)=>{
+            let elementIndex=e.target.getAttribute("id")
+            document.getElementById(elementIndex+"sec").remove()
+        })
+        
+    })
+    btndeleteAll.addEventListener("click",()=>{
+        const gifs=document.querySelectorAll("section")
+        for (const gif of gifs) {
+            gif.remove()
+        }
+        input.value=""
+    })
+
+</script>
+</html>
