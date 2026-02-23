@@ -167,14 +167,17 @@
 
           const input=document.getElementById("search")
           input.addEventListener("input",(e)=>{
-            
+            main.innerHTML=""
             let search=robots.filter(robot=>robot.name.toLowerCase().startsWith(e.target.value.toLowerCase()))
-            if (search) {
-              main.innerHTML=""
+            if (search.length > 0) {
+              
               display(search)
             } else {
-              let p = document.createElement("p")
-            p.textContent="Item not found"
+
+            let msg = document.createElement("p")
+            msg.textContent="Item not found"
+            main.appendChild(msg)
+
             }
             
           })
