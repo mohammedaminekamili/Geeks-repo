@@ -56,7 +56,8 @@ const loader = document.getElementById('loader');
   button.addEventListener('click', async () => {
     loader.style.display = 'block';   // show loader
 
-    try {senction.innerHTML=""
+    try {
+        senction.innerHTML=""
         let index=Math.floor(Math.random() *83)
         let response=await fetch("https://www.swapi.tech/api/people/"+index)
         let data=await response.json()
@@ -78,10 +79,17 @@ const loader = document.getElementById('loader');
         senction.appendChild(gender)
         senction.appendChild(birthday)
         senction.appendChild(home)
+    
 
 
-
-    } finally {
+    }
+    catch(error){
+      senction.innerHTML=""
+      let p=document.createElement("p")
+      p.textContent="Oh No! That person isn't available"
+      senction.appendChild(p)
+    }
+    finally {
       loader.style.display = 'none';  // hide loader
     }
   });

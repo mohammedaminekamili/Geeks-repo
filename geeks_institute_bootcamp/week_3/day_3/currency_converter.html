@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="number" name="amount" id="amount">
+        <select name="current" id="current">current</select>
+        <img src="148588337-233540b7-aac6-4b25-bbf4-520765380f59.png" alt="change order" id="change">
+        <select name="target" id="target">target</select>
+        <button id="convert">convert</button>
+        <p id="result"></p>
+    </form>
+</body>
+<script>
+    const form =document.getElementById("form")
+    const current=document.getElementById("current")
+    const target=document.getElementById("target")
+    const convert=document.getElementById("convert")
+    const amount=document.getElementById("amount")
+    const p=document.getElementById("result")
+    const change=document.getElementById("change")
+    async function  getCurrencyList(array){
+        let response= await fetch("https://v6.exchangerate-api.com/v6/ae4df107e632c6f87fa3037b/codes")
+        let data=await response.json()
+return data["supported_codes"]
+}
+
+function  fillOption(array,e){
+ 
+    for (const curr of array) {
+        let option=document.createElement("option")
+        option.value=curr[0]
+        option.textContent=curr[0]+"_"+curr[1]
+        e.appendChild(option)
+
+    }
+}
+
+(async function init() {
+    const currencyList = await getCurrencyList();
+    
+    fillOption(currencyList, target);
+    fillOption(currencyList, current);
+  })();
+  convert.addEventListener("click",async (e)=>{
+    e.preventDefault()
+    p.innerHTML=""
+    let response=await fetch("https://v6.exchangerate-api.com/v6/ae4df107e632c6f87fa3037b/pair/"+current.value+"/"+target.value+"/"+amount.value)
+    let data=await response.json()
+    let result=await data.conversion_result
+   
+    p.textContent=result
+    
+
+})
+change.addEventListener("click",()=>{
+    [current.value,target.value]=[target.value,current.value]
+})
+    
+</script>
+</html>
