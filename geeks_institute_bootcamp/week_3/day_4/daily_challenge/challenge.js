@@ -1,0 +1,6 @@
+const greet=require("./greeting.js")
+const display=require("./colorful_msg.js")
+const read=require("./files/read_file.js")
+console.log(greet("kam"))
+display()
+read()
