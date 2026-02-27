@@ -39,7 +39,7 @@ app.post("/posts",(req,res)=>{
     try {
         const {title,content}=req.body
         if (!title || !content) {
-            return removeEventListener.status(400).send("fill all required fields")
+            return res.status(400).send("fill all required fields")
         }
         const post={
             id:data.length+1,
