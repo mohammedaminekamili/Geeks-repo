@@ -37,11 +37,7 @@ db.students.find({age:{$gte:18,$lte:25}})
   city: 'New York',
   major: 'AI'
 }
-db.students.updateOne({name:'Yassine'}, $set:{city:'Casablanca'})
-SyntaxError: Unexpected token, expected "," (1:44)
-
-> 1 | db.students.updateOne({name:'Yassine'}, $set:{city:'Casablanca'})
-    |                                             ^
+                                         ^
 db.students.updateOne({name:'Yassine'},{ $set:{city:'Casablanca'}})
 {
   acknowledged: true,
