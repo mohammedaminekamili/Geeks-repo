@@ -1,0 +1,58 @@
+db.students.insertMany([
+  { name: "Yassine", age: 19, city: "Rabat", major: "AI" },
+  { name: "Sophia", age: 26, city: "Paris", major: "Cybersecurity" },
+  { name: "Kaito", age: 22, city: "Tokyo", major: "Web Dev" },
+  { name: "Elena", age: 31, city: "Madrid", major: "Data Science" },
+  { name: "Marcus", age: 24, city: "New York", major: "AI" }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69a591059b831c935b7107e3'),
+    '1': ObjectId('69a591059b831c935b7107e4'),
+    '2': ObjectId('69a591059b831c935b7107e5'),
+    '3': ObjectId('69a591059b831c935b7107e6'),
+    '4': ObjectId('69a591059b831c935b7107e7')
+  }
+}
+db.students.find({age:{$gte:18,$lte:25}})
+{
+  _id: ObjectId('69a591059b831c935b7107e3'),
+  name: 'Yassine',
+  age: 19,
+  city: 'Rabat',
+  major: 'AI'
+}
+{
+  _id: ObjectId('69a591059b831c935b7107e5'),
+  name: 'Kaito',
+  age: 22,
+  city: 'Tokyo',
+  major: 'Web Dev'
+}
+{
+  _id: ObjectId('69a591059b831c935b7107e7'),
+  name: 'Marcus',
+  age: 24,
+  city: 'New York',
+  major: 'AI'
+}
+db.students.updateOne({name:'Yassine'}, $set:{city:'Casablanca'})
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.students.updateOne({name:'Yassine'}, $set:{city:'Casablanca'})
+    |                                             ^
+db.students.updateOne({name:'Yassine'},{ $set:{city:'Casablanca'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.students.deleteOne({name:'Sophia'})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.students.updateMany({major:'AI'},{$set:{major:'Generative AI'}})
