@@ -1,0 +1,69 @@
+db.products.insertMany([
+  {
+    name: "Wireless Headphones",
+    price: 79.99,
+    category: "Electronics",
+    stock: 18
+  },
+  {
+    name: "LED Desk Lamp",
+    price: 29.99,
+    category: "Home",
+    stock: 180
+  },
+  {
+    name: "Notebook A5",
+    price: 4.5,
+    category: "Stationery",
+    stock: 6
+  },
+  {
+    name: "Bluetooth Speaker",
+    price: 49.99,
+    category: "Electronics",
+    stock: false
+  },
+  {
+    name: "Ceramic Coffee Mug",
+    price: 12.0,
+    category: "Home",
+    stock: 100
+  }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69a598cba8f63ee278d0975f'),
+    '1': ObjectId('69a598cba8f63ee278d09760'),
+    '2': ObjectId('69a598cba8f63ee278d09761'),
+    '3': ObjectId('69a598cba8f63ee278d09762'),
+    '4': ObjectId('69a598cba8f63ee278d09763')
+  }
+}
+db.products.find({ stock: { $lt: 10 } })
+{
+  _id: ObjectId('69a598cba8f63ee278d09761'),
+  name: 'Notebook A5',
+  price: 4.5,
+  category: 'Stationery',
+  stock: 6
+}
+db.products.updateMany(
+  { category: "Electronics" },
+  { $mul: { price: 1.1 } } 
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db.products.find().sort({ price: -1 }).limit(1)
+{
+  _id: ObjectId('69a598cba8f63ee278d0975f'),
+  name: 'Wireless Headphones',
+  price: 87.989,
+  category: 'Electronics',
+  stock: 18
+}
