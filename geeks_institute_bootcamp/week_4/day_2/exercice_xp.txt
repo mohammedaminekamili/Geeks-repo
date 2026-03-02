@@ -1,0 +1,17 @@
+db.users.insertOne({
+  name: "Yasmine",
+  email: "yasmine@tech.ma",
+  address: {
+    city: "Casablanca",
+    country: "Morocco",
+    postalCode: "20000"
+  }
+})
+
+db.orders.insertOne({
+  orderNumber: "ORD-99X",
+  total: 1500,
+  currency: "MAD",
+  status: "Processing",
+  userId: ObjectId("69a59a32a8f63ee278d09764") 
+})

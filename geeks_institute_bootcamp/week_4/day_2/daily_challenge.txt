@@ -1,0 +1,52 @@
+db.users.insertMany([
+  {
+    username: "ali_dev",
+    bio: "Full‑stack developer who loves JavaScript and Node.js.",
+    socialLinks: {
+      twitter: "https://twitter.com/ali_dev",
+      github: "https://github.com/ali-dev",
+      linkedin: "https://www.linkedin.com/in/ali-dev"
+    }
+  },
+  {
+    username: "sara_codes",
+    bio: "Frontend engineer focusing on React and UI/UX.",
+    socialLinks: {
+      twitter: "https://twitter.com/sara_codes",
+      github: "https://github.com/sara-codes"
+    }
+  },
+  {
+    username: "moh_star",
+    bio: "Backend developer and database enthusiast.",
+    socialLinks: {
+      linkedin: "https://www.linkedin.com/in/moh-star"
+    }
+  }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69a59d88a8f63ee278d09766'),
+    '1': ObjectId('69a59d88a8f63ee278d09767'),
+    '2': ObjectId('69a59d88a8f63ee278d09768')
+  }
+}
+db.posts.insertOne({
+  title: "Why I Love MongoDB",
+  body: "Schema flexibility is a game changer...",
+  authorId: ObjectId("69a59d88a8f63ee278d09768"), // Reference to the User
+  tags: ["NoSQL", "Database", "Tech"],
+  comments: [
+    {
+      user: "CodeMaster",
+      text: "Great article! Very clear.",
+      date: new Date()
+    }
+  ]
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69a59e33a8f63ee278d09769')
+}
+db.posts.find()
