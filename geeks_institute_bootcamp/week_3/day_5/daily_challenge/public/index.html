@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emoji Guessing Game</title>
+</head>
+<body>
+  <h1>Emoji Guessing Game</h1>
+  <div id="game"></div>
+  <div id="feedback"></div>
+  <div id="score"></div>
+
+  <form id="guessForm">
+    <input type="hidden" id="correct" name="correct">
+    <div id="options"></div>
+    <button type="submit">Submit Guess</button>
+  </form>
+
+  <script>
+    async function newEmoji() {
+      const res = await fetch('/emoji');
+      const data = await res.json();
+
+      document.getElementById('game').innerHTML = `<h2>${data.emoji}</h2>`;
+      document.getElementById('correct').value = data.correct;
+
+      document.getElementById('options').innerHTML = data.options.map(opt =>
+        `<label><input type="radio" name="guess" value="${opt}" required> ${opt}</label><br>`
+      ).join('');
+    }
+
+    document.getElementById('guessForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const res = await fetch('/guess', {
+        method: 'POST',
+        body: new URLSearchParams(formData)
+      });
+      const data = await res.json();
+      document.getElementById('feedback').innerText = data.result;
+      document.getElementById('score').innerText = "Score: " + data.score;
+      setTimeout(newEmoji, 1000);
+    });
+
+    newEmoji();
+  </script>
+</body>
+</html>
