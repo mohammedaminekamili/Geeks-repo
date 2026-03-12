@@ -42,5 +42,6 @@ FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab )
 SELECT COUNT(*) 
 FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NOT NULL )
 /* 
-
+2  because null values in comparaison return unknown and the count function don't receive any rows to count
 */
+
