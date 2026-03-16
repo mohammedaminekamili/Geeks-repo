@@ -1,0 +1,72 @@
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-left: 20%;
+}
+
+.icon{
+  color:orange;
+  font-size:24px;
+}
+
+.menu{
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap: 0.5rem;
+  justify-content: end;
+  margin-right: 0.5rem;
+}
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:2rem;
+}
+form{
+  display: flex;
+  justify-content: space-between;
+}
+
+legend{
+  display: flex;
+  margin-left: 0.5rem;
+
+}
+label{
+  margin-left: 0.5rem;
+
+}
+
+.input{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap:0.5rem;
+  margin-right: 0.5rem;
+}
+
+button{
+  color: white;
+  background-color: orange;
+  margin-bottom: 0.5rem;
+  width: auto;
+  
+}
+.start{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24%;
+  margin-right: 38%;
+  margin-left: 38%;
+  margin-top: 1rem; 
+  margin-bottom: 1rem; ;
+}
