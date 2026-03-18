@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import CelebrityCard from './components/CelebrityCard.jsx'
+import Planet from './components/Planet.jsx' 
 
 function App() {
   const celebrities = [
@@ -24,9 +25,19 @@ function App() {
         "Paul McCartney is an English singer, songwriter, and musician best known as a member of the Beatles.",
     },
   ];
+
+  const planets = [
+    "Mars",
+    "Venus",
+    "Jupiter",
+    "Earth",
+    "Saturn",
+    "Neptune",
+  ];
   return (
     <>
       {celebrities.map((x,index)=>(<CelebrityCard key={index} celebrity={x}/>))}
+      {planets.map((x,index)=>(<Planet key={index} planet={x}/>))}
     </>
   )
 }
