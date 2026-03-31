@@ -1,7 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ErrorBoundary from "./ErrorBoundary";
+import ErrorBoundary from "./ErrorBoundary.jsx";
+import Example1 from "./Example1.jsx"
+import PostList from "./PostList.jsx"
+import Example2 from "./Example2.jsx"
+
 
 // --- Step 6: Functional Components ---
 
@@ -41,7 +45,11 @@ function App() {
         <Route 
           path="/" 
           element={
-            <ErrorBoundary><HomeScreen /></ErrorBoundary>
+            <ErrorBoundary><HomeScreen />
+           <PostList/>
+           <Example1/>
+           <Example2/>
+            </ErrorBoundary>
           } 
         />
         <Route 
@@ -58,6 +66,8 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
+  
+
   );
 }
 
