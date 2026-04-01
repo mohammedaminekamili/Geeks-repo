@@ -5,6 +5,7 @@ import ErrorBoundary from "./ErrorBoundary.jsx";
 import Example1 from "./Example1.jsx"
 import PostList from "./PostList.jsx"
 import Example2 from "./Example2.jsx"
+import Example3 from "./Example3.jsx"
 
 
 // --- Step 6: Functional Components ---
@@ -24,6 +25,37 @@ const ProfileScreen = () => (
 const ShopScreen = () => {
   // Step 6: Throw an error intentionally
   throw new Error("The Shop is currently broken!");
+};
+
+
+const postData = async () => {
+  const url = "https://webhook.site/24c1a883-0707-445e-ae85-f0b421dbe3ea"; 
+  const myData = {
+    key1: 'myusername',
+    email: 'mymail@gmail.com',
+    name: 'Isaac',
+    lastname: 'Doe',
+    age: 27
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(myData) 
+    });
+
+    console.log("Response Status:", response.status);
+    
+    const result = await response.text(); 
+    console.log("Server Response:", result);
+    
+    alert("Data sent! Check Webhook.site");
+  } catch (error) {
+    console.error("Error posting data:", error);
+  }
 };
 
 function App() {
@@ -49,13 +81,21 @@ function App() {
            <PostList/>
            <Example1/>
            <Example2/>
+           <Example3/>
             </ErrorBoundary>
           } 
         />
         <Route 
           path="/profile" 
           element={
-            <ErrorBoundary><ProfileScreen /></ErrorBoundary>
+            <ErrorBoundary><ProfileScreen />
+            <h1>Post JSON Data Exercise</h1>
+      <button 
+        className="btn btn-primary" 
+        onClick={postData}
+      >
+        Send Data to Webhook
+      </button></ErrorBoundary>
           } 
         />
         <Route 
