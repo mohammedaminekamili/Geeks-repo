@@ -1,54 +1,75 @@
 import React, { useContext } from 'react';
 import { TaskContext } from './TaskContext';
+import TaskItem from './TaskItem';
 
 const TaskList = () => {
-  const { tasks, dispatch } = useContext(TaskContext);
+  const { tasks, filter, dispatch } = useContext(TaskContext);
 
-  if (tasks.length === 0) {
-    return <p>No tasks yet. Add one above!</p>;
-  }
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === 'ACTIVE') return !task.completed;
+    if (filter === 'COMPLETED') return task.completed;
+    return true; // 'ALL'
+  });
 
   return (
-    <ul style={{ listStyleType: 'none', padding: 0, textAlign: 'left' }}>
-      {tasks.map((task) => (
-        <li 
-          key={task.id} 
-          style={{ 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            alignItems: 'center',
-            padding: '10px',
-            borderBottom: '1px solid var(--border)',
-            backgroundColor: 'var(--bg)'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <input 
-              type="checkbox" 
-              checked={task.completed} 
-              onChange={() => dispatch({ type: 'TOGGLE_TASK', payload: task.id })}
-              style={{ cursor: 'pointer' }}
-            />
-            <span style={{ textDecoration: task.completed ? 'line-through' : 'none', color: task.completed ? 'gray' : 'var(--text)' }}>
-              {task.text}
-            </span>
-          </div>
+    <div>
+      {tasks.length > 0 && (
+        <div style={{ marginBottom: '20px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
           <button 
-            onClick={() => dispatch({ type: 'REMOVE_TASK', payload: task.id })}
-            style={{
-              padding: '6px 12px',
-              backgroundColor: '#f44336',
-              color: 'white',
-              border: 'none',
+            onClick={() => dispatch({ type: 'FILTER_TASKS', payload: 'ALL' })}
+            style={{ 
+              fontWeight: filter === 'ALL' ? 'bold' : 'normal', 
+              padding: '6px 12px', 
+              cursor: 'pointer',
+              backgroundColor: filter === 'ALL' ? '#e0e0e0' : 'var(--bg)',
+              border: '1px solid var(--border)',
               borderRadius: '4px',
-              cursor: 'pointer'
+              color: 'var(--text)'
             }}
           >
-            Remove
+            All
           </button>
-        </li>
-      ))}
-    </ul>
+          <button 
+            onClick={() => dispatch({ type: 'FILTER_TASKS', payload: 'ACTIVE' })}
+            style={{ 
+              fontWeight: filter === 'ACTIVE' ? 'bold' : 'normal', 
+              padding: '6px 12px', 
+              cursor: 'pointer',
+              backgroundColor: filter === 'ACTIVE' ? '#e0e0e0' : 'var(--bg)',
+              border: '1px solid var(--border)',
+              borderRadius: '4px',
+              color: 'var(--text)'
+            }}
+          >
+            Active
+          </button>
+          <button 
+            onClick={() => dispatch({ type: 'FILTER_TASKS', payload: 'COMPLETED' })}
+            style={{ 
+              fontWeight: filter === 'COMPLETED' ? 'bold' : 'normal', 
+              padding: '6px 12px', 
+              cursor: 'pointer',
+              backgroundColor: filter === 'COMPLETED' ? '#e0e0e0' : 'var(--bg)',
+              border: '1px solid var(--border)',
+              borderRadius: '4px',
+              color: 'var(--text)'
+            }}
+          >
+            Completed
+          </button>
+        </div>
+      )}
+      
+      {filteredTasks.length === 0 ? (
+        <p>No tasks found.</p>
+      ) : (
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+          {filteredTasks.map((task) => (
+            <TaskItem key={task.id} task={task} />
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 
