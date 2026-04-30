@@ -17,7 +17,8 @@ class Familly():
         return False
     def family_presentation(self):
         print(f"The {self.last_name} family is composed of: {self.members}")
-        
+    
+
 members = [
     {'name': 'Michael', 'age': 35, 'gender': 'Male', 'is_child': False},
     {'name': 'Sarah', 'age': 32, 'gender': 'Female', 'is_child': False}
@@ -32,6 +33,7 @@ my_family.born(name="Youssef", age=0, gender="Male", is_child=True)
 # Check ages
 my_family.is_18("Michael")
 my_family.is_18("Youssef")
+
 
 # Present family
 my_family.family_presentation()
