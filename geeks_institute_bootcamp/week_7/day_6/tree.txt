@@ -1,0 +1,11 @@
+<CoffeeOrderScreen/> (Parent)
+
+  <UserWelcome />              (Child)
+  <DrinkList />               (Child)
+    <DrinkItem />             (Grandchild)
+    <DrinkItem />
+    <DrinkItem />
+
+  <RobotStatusIndicator />    (Child)
+
+  <BrewButton />              (Child)

@@ -1,0 +1,17 @@
+<App> (Root / Parent)
+
+  <Header />                 (Child)
+
+  <DashboardLayout>          (Child)
+    
+    <Sidebar />              (Grandchild - navigation)
+
+    <MainContent>            (Grandchild - content area)
+
+      <HardwareStatusGrid /> (Great-Grandchild)
+
+      <OrderQueue />         (Great-Grandchild)
+
+    </MainContent>
+
+  </DashboardLayout>

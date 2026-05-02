@@ -1,0 +1,23 @@
+<SystemHealthPanel> (Parent)
+
+  <Card title="Hardware Health">   (Child)
+
+    <StatusRow 
+      deviceName="Dobot Arm" 
+      status="Online" 
+      indicatorColor="green" 
+    />
+
+    <StatusRow 
+      deviceName="Tuya Fingerbot" 
+      status="Asleep" 
+      indicatorColor="yellow" 
+    />
+
+    <StatusRow 
+      deviceName="Coffee Machine" 
+      status="Offline" 
+      indicatorColor="red" 
+    />
+
+  </Card>
